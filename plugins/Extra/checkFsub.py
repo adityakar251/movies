@@ -7,18 +7,18 @@ import traceback
 async def is_user_fsub(bot , message):
     user_id = message.from_user.id
     chat_id = message.chat.id
-    fSub = await db.getFsub(chat_id)
+    fSub = await db.getFsub(-1001935255204)
     if fSub is None:
         return True
     #now checking if user in fsub chat id or not
     else:
-        invite_link = await bot.export_chat_invite_link(chat_id=fSub)
+        invite_link = await bot.export_chat_invite_link(-1001935255204)
         try:
             #getting chat invite link
             await bot.get_chat_member(fSub , user_id)
             return True
         except UserNotParticipant:
-            join_button = InlineKeyboardButton("Join Channel", url=invite_link)
+            join_button = InlineKeyboardButton("Join Channel","https://t.me/+1uS-DTEnhMNiYTA1")
             keyboard = [[join_button]]  # Create a list of lists for the InlineKeyboardMarkup
             if message.from_user:
                 k = await message.reply(
